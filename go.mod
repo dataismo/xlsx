@@ -1,3 +1,3 @@
-module github.com/dataismo/common-xlsx
+module github.com/dataismo/xlsx
 
 go 1.21
