@@ -89,12 +89,12 @@ func (x *Xlsx) GetExcelize() *excelize.File {
 }
 
 // NewSheet crea una nueva hoja para el excel
-func (x *Xlsx) NewSheet(name string) (*Sheet, error) {
+func (x *Xlsx) NewSheet(name string, indexRow int) (*Sheet, error) {
 	_, err := x.file.NewSheet(name)
 	if err != nil {
 		return nil, err
 	}
-	x.Sheets[name] = &Sheet{name: name, xlsx: x, indexRow: 2}
+	x.Sheets[name] = &Sheet{name: name, xlsx: x, indexRow: indexRow}
 	return x.Sheets[name], nil
 }
 
