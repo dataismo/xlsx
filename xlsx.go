@@ -256,11 +256,16 @@ func (xlsx *Xlsx) Output() ([]byte, error) {
 	return data, err
 }
 
-// retorna el path del del archivo guardado temporalmente
+// SaveTmp retorna el path del del archivo guardado temporalmente
 func (xlsx *Xlsx) SaveTmp() (string, error) {
 	path := os.TempDir() + "/" + strconv.Itoa(int(time.Now().Unix())) + ".xlsx"
 	if err := xlsx.file.SaveAs(path); err != nil {
 		return "", err
 	}
 	return path, nil
+}
+
+// SetCellStyle coloca un estylo a una celda
+func (sheet *Sheet) SetCellStyle(axis string, styleid int) error {
+	return sheet.xlsx.file.SetCellStyle(sheet.name, axis, axis, styleid)
 }
