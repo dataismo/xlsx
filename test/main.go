@@ -26,7 +26,11 @@ func main() {
 
 	excel := xlsx.New("General", 2)
 
-	sheet := excel.GetDefaultSheet()
+	sheet, err := excel.NewSheet("Demo", 2)
+
+	if err != nil {
+		panic(err)
+	}
 
 	res, err := http.Get("https://rickandmortyapi.com/api/character")
 

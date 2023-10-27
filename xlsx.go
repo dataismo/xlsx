@@ -94,7 +94,7 @@ func (x *Xlsx) NewSheet(name string, indexRow int) (*Sheet, error) {
 	if err != nil {
 		return nil, err
 	}
-	x.Sheets[name] = &Sheet{name: name, xlsx: x, indexRow: indexRow}
+	x.Sheets[name] = &Sheet{name: name, xlsx: x, indexRow: indexRow, startIndex: indexRow}
 	return x.Sheets[name], nil
 }
 
