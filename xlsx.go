@@ -269,3 +269,11 @@ func (xlsx *Xlsx) SaveTmp() (string, error) {
 func (sheet *Sheet) SetCellStyle(axis string, styleid int) error {
 	return sheet.xlsx.file.SetCellStyle(sheet.name, axis, axis, styleid)
 }
+
+func (sheet *Sheet) GetName() string {
+	return sheet.name
+}
+
+func (sheet *Sheet) MergeCells(startCell string, endCell string) error {
+	return sheet.xlsx.file.MergeCell(sheet.name, startCell, endCell)
+}
